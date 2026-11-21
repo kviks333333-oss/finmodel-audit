@@ -1,0 +1,78 @@
+# Учебный сервис аудита финансовых моделей. Откройте Markdy Preview в VS Code.
+# Пробел — пауза. Стрелки влево и вправо — переход между эпизодами.
+scene theme=midnight width=1100 height=755
+layout LR
+
+browser UI "Интерфейс аналитика" tech="React · браузер"
+gateway API "Веб-сервис" tech="FastAPI"
+worker Worker "Обработчик задач" tech="Python · worker"
+database Jobs "Очередь и статусы" tech="PostgreSQL"
+storage Files "Книги и отчёты" tech="SeaweedFS · S3"
+storage Volume "Общий том" tech="Docker · /data"
+service Agent "Управление анализом" tech="pipeline.py · в worker"
+function Excel "Проверки Excel" tech="OOXML · расчёты"
+cloud LLM "GigaChat" tech="Внешний API"
+function Slides "Экспорт PowerPoint" tech="Node.js · PptxGenJS"
+
+# API и worker — отдельные сервисы Docker Compose. Агент и инструменты Excel
+# работают внутри worker. Экспорт запускается по запросу API отдельным процессом.
+# На схеме /data — рабочие копии и контрольные точки, S3 — оригиналы и отчёты.
+# Ветвь local заканчивается после локальных проверок и формирования отчёта.
+# Следующие эпизоды о GigaChat показывают альтернативный режим для той же книги.
+# Код: server.py, jobs.py, storage.py, worker.py. Внутри worker — pipeline.py,
+# gigachat.py, tools.py, workbook.py, impact.py, agent_evidence.py и decision.py.
+# Экспорт: export_service.py и pptx_runtime/render.cjs.
+
+beat intake "FastAPI принимает XLSX, сохраняет оригинал и ставит задачу в очередь":
+  show $nodes stagger=40ms
+  UI -> API dur=1.8s
+  API -> Files "Оригинал XLSX" dur=1.6s
+  API -> Jobs dur=1.6s
+  UI <- API dur=1.5s
+
+beat claim "Фоновый обработчик берёт из очереди одну задачу":
+  Worker -> Jobs dur=1.6s
+  Worker <- Jobs dur=1.6s
+  Volume -> Worker "Рабочая копия" dur=1.6s
+  Worker -> Agent dur=1.6s
+
+beat local "В обоих режимах Python первым проверяет книгу":
+  Agent -> Excel dur=1.8s
+  Agent <- Excel dur=1.8s
+  glow Excel dur=1.4s
+
+beat offline "В локальном режиме результат готовят по проверкам Excel":
+  Worker <- Agent dur=2.3s
+  glow Worker dur=1s
+
+beat cloud "В режиме GigaChat модель выбирает инструмент для текущей стадии":
+  Agent -> LLM dur=1.8s
+  Agent <- LLM dur=1.8s
+
+beat tools "Python читает формулы, считает сценарии и возвращает агенту источники":
+  Agent -> Excel dur=1.7s
+  Agent <- Excel dur=1.7s
+  Agent -> LLM dur=1.7s
+
+beat stages "Стадии агента — аудит, предпосылки, качество модели и обзор бизнеса":
+  Agent <- LLM dur=1.8s
+  glow Agent dur=1.1s
+  Volume <- Agent "Контрольная точка" dur=1.8s
+
+beat evidence "Python сверяет числа и выводы с полученными ячейками":
+  glow Agent dur=1.5s
+  Worker <- Agent dur=1.7s
+
+beat publish "Обработчик сохраняет JSON и HTML. Аналитик открывает отчёт через API":
+  Worker -> Files dur=1.8s
+  Worker -> Jobs dur=1.7s
+  UI -> API dur=1.6s
+  API <- Volume dur=1.6s
+  UI <- API dur=1.8s
+
+beat export "По запросу аналитика из сохранённого отчёта собираются слайды":
+  UI -> API dur=1.6s
+  API -> Slides dur=1.7s
+  API <- Slides dur=1.7s
+  UI <- API dur=1.7s
+  glow UI dur=1.2s

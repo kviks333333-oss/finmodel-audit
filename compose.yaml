@@ -1,0 +1,151 @@
+name: finmodel-audit
+
+x-logging: &bounded-logging
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "3"
+
+x-app: &app
+  build: .
+  image: finmodel-audit:0.2.0
+  restart: unless-stopped
+  environment: &app-env
+    DATA_DIR: /data
+    DATABASE_URL: postgresql+psycopg://finmodel:${FINMODEL_DB_PASSWORD:?Set FINMODEL_DB_PASSWORD in .env}@postgres:5432/finmodel
+    STORAGE_BACKEND: s3
+    S3_ENDPOINT: http://s3:8333
+    S3_BUCKET: finmodel
+    S3_ACCESS_KEY: finmodel-local
+    S3_SECRET_KEY: ${FINMODEL_S3_PASSWORD:?Set FINMODEL_S3_PASSWORD in .env}
+    GIGACHAT_CA_BUNDLE: /app/certs/russian_trusted_root_ca_pem.crt
+    FINMODEL_ENV_FILE: /run/secrets/gigachat_env
+  secrets:
+    - gigachat_env
+  volumes:
+    - work_data:/data
+  tmpfs:
+    - /tmp:size=256m,mode=1777
+  read_only: true
+  security_opt:
+    - no-new-privileges:true
+  cap_drop:
+    - ALL
+  pids_limit: 128
+  mem_limit: 1024m
+  logging: *bounded-logging
+  depends_on:
+    postgres:
+      condition: service_healthy
+    s3:
+      condition: service_started
+    s3-init:
+      condition: service_completed_successfully
+
+services:
+  api:
+    <<: *app
+    mem_limit: 512m
+    ports:
+      - "127.0.0.1:8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health', timeout=5)"]
+      interval: 10s
+      timeout: 6s
+      retries: 6
+      start_period: 15s
+  worker:
+    <<: *app
+    command: ["python", "-m", "finmodel_audit.worker"]
+    stop_grace_period: 150s
+    depends_on:
+      api:
+        condition: service_healthy
+  postgres:
+    image: postgres:16-alpine@sha256:0cefaabd882e42bcb2a2f3dc56d3ce4770560ba62fd7f197f1a2e008fd5731ab
+    restart: unless-stopped
+    mem_limit: 384m
+    logging: *bounded-logging
+    environment:
+      POSTGRES_DB: finmodel
+      POSTGRES_USER: finmodel
+      POSTGRES_PASSWORD: ${FINMODEL_DB_PASSWORD:?Set FINMODEL_DB_PASSWORD in .env}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U finmodel -d finmodel"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  s3:
+    image: chrislusf/seaweedfs@sha256:c2658820e763294a9e9de7b36c81e59b879e3459148351aee4e31a126ca64860
+    restart: unless-stopped
+    mem_limit: 512m
+    logging: *bounded-logging
+    command: ["mini", "-dir=/data", "-ip.bind=0.0.0.0"]
+    environment:
+      AWS_ACCESS_KEY_ID: finmodel-local
+      AWS_SECRET_ACCESS_KEY: ${FINMODEL_S3_PASSWORD:?Set FINMODEL_S3_PASSWORD in .env}
+      S3_BUCKET: finmodel
+    volumes:
+      - object_data:/data
+    healthcheck:
+      test: ["CMD", "sh", "-c", "nc -z 127.0.0.1 8333"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 10s
+  s3-init:
+    image: finmodel-audit:0.2.0
+    restart: "no"
+    mem_limit: 192m
+    logging: *bounded-logging
+    environment:
+      S3_ENDPOINT: http://s3:8333
+      S3_BUCKET: finmodel
+      S3_ACCESS_KEY: finmodel-local
+      S3_SECRET_KEY: ${FINMODEL_S3_PASSWORD:?Set FINMODEL_S3_PASSWORD in .env}
+    depends_on:
+      s3:
+        condition: service_healthy
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    command:
+      - python
+      - -c
+      - |
+        import os, time
+        import boto3
+        from botocore.config import Config
+        client = boto3.client('s3', endpoint_url=os.environ['S3_ENDPOINT'],
+            aws_access_key_id=os.environ['S3_ACCESS_KEY'],
+            aws_secret_access_key=os.environ['S3_SECRET_KEY'], region_name='us-east-1',
+            config=Config(connect_timeout=3, read_timeout=3, retries={'max_attempts': 1}))
+        for attempt in range(60):
+            try:
+                try:
+                    client.head_bucket(Bucket=os.environ['S3_BUCKET'])
+                except client.exceptions.ClientError as error:
+                    if error.response.get('ResponseMetadata', {}).get('HTTPStatusCode') == 404:
+                        client.create_bucket(Bucket=os.environ['S3_BUCKET'])
+                    else:
+                        raise
+                client.head_bucket(Bucket=os.environ['S3_BUCKET'])
+                print('Object storage ready', flush=True)
+                break
+            except Exception:
+                if attempt == 59:
+                    raise SystemExit('Object storage did not become ready') from None
+                time.sleep(2)
+
+secrets:
+  gigachat_env:
+    file: .env
+
+volumes:
+  work_data:
+  postgres_data:
+  object_data:

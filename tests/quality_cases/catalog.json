@@ -1,0 +1,27 @@
+{
+  "version": "2026-11-04.1",
+  "label_policy": "Hand-labeled structural cases. Codes measure findings, not financial materiality. Held-out variants must not be added to runtime prompts or used to tune source addresses.",
+  "monitored_codes": ["pv_fcff_duplicate_term", "pv_fcff_historical_period", "gordon_double_discount", "datatable_basepoint_cache_mismatch", "irr_on_discounted_cashflows", "fcff_net_profit_nopat_overlap"],
+  "cases": [
+    {"id":"train_dcf_clean","split":"development","family":"corporate","variant":"clean","expected":[]},
+    {"id":"train_dcf_repeat_alias","split":"development","family":"corporate","variant":"duplicate","expected":["pv_fcff_duplicate_term"]},
+    {"id":"train_dcf_closed_period","split":"development","family":"corporate","variant":"historical","expected":["pv_fcff_historical_period"]},
+    {"id":"train_dcf_discount_twice","split":"development","family":"corporate","variant":"double_discount","expected":["gordon_double_discount"]},
+    {"id":"train_dcf_stale_grid","split":"development","family":"corporate","variant":"grid_mismatch","expected":["datatable_basepoint_cache_mismatch"]},
+    {"id":"train_equal_independent_flows","split":"development","family":"corporate","variant":"equal_independent","expected":[]},
+    {"id":"train_project_clean","split":"development","family":"project","variant":"clean","expected":[]},
+    {"id":"train_project_discounted_irr","split":"development","family":"project","variant":"discounted_irr","expected":["irr_on_discounted_cashflows"]},
+    {"id":"train_project_profit_overlap","split":"development","family":"project","variant":"overlap","expected":["fcff_net_profit_nopat_overlap"]},
+    {"id":"train_project_equal_independent_profit","split":"development","family":"project","variant":"independent_profit","expected":[]},
+    {"id":"train_project_missing_riskfree_broken_dates","split":"development","family":"project","variant":"critical_inputs","expected":[],"investigation_issues":["blank_risk_free_reference","calendar_step_missing","calendar_end_before_start"]},
+    {"id":"train_project_explicit_zero_riskfree","split":"development","family":"project","variant":"zero_riskfree","expected":[],"investigation_issues":[]},
+    {"id":"holdout_A","split":"held_out","family":"corporate","variant":"clean","sheet":"Cash engine O'Brien","row_shift":137,"column_shift":29,"labels":"alternate","expected":[]},
+    {"id":"holdout_B","split":"held_out","family":"corporate","variant":"duplicate","sheet":"Расчётный блок","row_shift":71,"column_shift":9,"cross_sheet_alias":true,"expected":["pv_fcff_duplicate_term"]},
+    {"id":"holdout_C","split":"held_out","family":"corporate","variant":"historical_double","sheet":"Scenario Delta","row_shift":19,"column_shift":4,"labels":"alternate","expected":["pv_fcff_historical_period","gordon_double_discount"]},
+    {"id":"holdout_D","split":"held_out","family":"project","variant":"overlap_discounted_irr","sheet":"Plan O'Brien","row_shift":203,"column_shift":28,"labels":"alternate","expected":["irr_on_discounted_cashflows","fcff_net_profit_nopat_overlap"]},
+    {"id":"holdout_E","split":"held_out","family":"project","variant":"zero_riskfree","sheet":"Одобренный нулевой input","row_shift":48,"column_shift":6,"expected":[],"investigation_issues":[]},
+    {"id":"holdout_F","split":"held_out","family":"corporate","variant":"constant_independent","sheet":"Inputs independent","row_shift":88,"column_shift":11,"expected":[]},
+    {"id":"holdout_G","split":"held_out","family":"corporate","variant":"disabled_gordon","sheet":"Valuation alternatives","row_shift":7,"column_shift":3,"expected":[]},
+    {"id":"holdout_H","split":"held_out","family":"project","variant":"critical_inputs","sheet":"Не исходный лист","row_shift":99,"column_shift":17,"expected":[],"investigation_issues":["blank_risk_free_reference","calendar_step_missing","calendar_end_before_start"]}
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "version": 1,
+  "frozen_at_utc": "2026-11-04T15:26:18.318483+00:00",
+  "basis": "Existing immutable .9 live report arithmetic plus explicit requirements; frozen before inspection of new decision output",
+  "reports": {
+    "original": {
+      "report_path": "outputs/agent_impact_v1/live_original_v9/report.json",
+      "report_sha256": "062d812599823df5c1d026247782ebaaf16f4d96a62f522a5bd053f3ef24518c",
+      "source_sha256": "ea7392b4323844ebe8baa430e0dc219468ae671b59accf88c682a862e55f4df1",
+      "scenarios": [
+        {
+          "id": "impact_77dc5516ee9aaa18e0a9",
+          "code": "pv_fcff_duplicate_term",
+          "kind": "remove_sum_terms",
+          "finding_ids": [
+            "financial_e9539191016a3dc7"
+          ],
+          "target": {
+            "sheet": "DCF",
+            "cell": "E55"
+          },
+          "raw_unit": "RUB M",
+          "baseline": 100579.37480758553,
+          "result": 90306.97589153994,
+          "delta": -10272.398916045582,
+          "relative_delta": -0.10213226057228242
+        },
+        {
+          "id": "impact_0d2f291e13448ed3cee1",
+          "code": "pv_fcff_historical_period",
+          "kind": "remove_historical_sum_term",
+          "finding_ids": [
+            "financial_de3228f06c87cec9"
+          ],
+          "target": {
+            "sheet": "DCF",
+            "cell": "E55"
+          },
+          "raw_unit": "RUB M",
+          "baseline": 100579.37480758553,
+          "result": 101296.93270758563,
+          "delta": 717.5579000001017,
+          "relative_delta": 0.007134244981864658
+        },
+        {
+          "id": "impact_0e2ecac21e41faf4749e",
+          "code": "gordon_double_discount",
+          "kind": "replace_gordon_numerator",
+          "finding_ids": [
+            "financial_d356ca5f0dd86149"
+          ],
+          "target": {
+            "sheet": "DCF",
+            "cell": "E55"
+          },
+          "raw_unit": "RUB M",
+          "baseline": 100579.37480758553,
+          "result": 154303.82761937444,
+          "delta": 53724.45281178891,
+          "relative_delta": 0.5341497987491677
+        }
+      ],
+      "expected_theme_order": [
+        "gordon_double_discount",
+        "pv_fcff_duplicate_term",
+        "pv_fcff_historical_period"
+      ],
+      "expected_unknown_themes": [
+        "datatable_basepoint_cache_mismatch"
+      ],
+      "expected_ranked_groups": 3
+    },
+    "second": {
+      "report_path": "outputs/agent_impact_v1/live_second_v9/report.json",
+      "report_sha256": "e14f55538dc631194ba644aebd82f6657272b1affb54bdfe961dcd5eed77dd1f",
+      "source_sha256": "2638f363b154a7fd61955058b7752c9dc8e903a323a6f58ab0ba964754e8af9a",
+      "scenarios": [
+        {
+          "id": "impact_1813005dfa60f894ed17",
+          "code": "fcff_net_profit_nopat_overlap",
+          "kind": "remove_net_profit",
+          "finding_ids": [
+            "financial_7be61738fb225236",
+            "financial_7d36ad6719f4da73",
+            "financial_90c7e0771f497578",
+            "financial_aee3408d90a3c2e4",
+            "financial_bd4a30c6cb96bb52"
+          ],
+          "target": {
+            "sheet": "DCF",
+            "cell": "C39"
+          },
+          "raw_unit": "тыс. руб.",
+          "baseline": 212584.20764063371,
+          "result": 74292.13174105328,
+          "delta": -138292.07589958044,
+          "relative_delta": -0.6505284538038613
+        },
+        {
+          "id": "impact_c1174ef8535b1f4d0377",
+          "code": "fcff_net_profit_nopat_overlap",
+          "kind": "remove_nopat",
+          "finding_ids": [
+            "financial_7be61738fb225236",
+            "financial_7d36ad6719f4da73",
+            "financial_90c7e0771f497578",
+            "financial_aee3408d90a3c2e4",
+            "financial_bd4a30c6cb96bb52"
+          ],
+          "target": {
+            "sheet": "DCF",
+            "cell": "C39"
+          },
+          "raw_unit": "тыс. руб.",
+          "baseline": 212584.20764063371,
+          "result": 73175.11834137447,
+          "delta": -139409.08929925924,
+          "relative_delta": -0.6557829052613612
+        }
+      ],
+      "expected_theme_order": [
+        "fcff_net_profit_nopat_overlap"
+      ],
+      "expected_unknown_themes": [
+        "irr_on_discounted_cashflows"
+      ],
+      "expected_ranked_groups": 1,
+      "alternatives_must_share_group": true,
+      "combined_effect_must_not_exist": true
+    }
+  },
+  "semantic_acceptance": [
+    {
+      "id": "unknown_is_not_low",
+      "expectation": "unquantified finding stays outside measured priority, not low or zero impact"
+    },
+    {
+      "id": "same_output_ordinal",
+      "expectation": "rank measured effects by descending abs(delta)/abs(baseline) within target+rawunit"
+    },
+    {
+      "id": "negative_baseline",
+      "expectation": "relative magnitude uses absolute baseline; sign cannot reverse urgency"
+    },
+    {
+      "id": "zero_baseline",
+      "expectation": "relative magnitude null; no invented percent or default zero"
+    },
+    {
+      "id": "different_targets",
+      "expectation": "separate comparison/ranking groups, no total materiality across outputs"
+    },
+    {
+      "id": "different_units",
+      "expectation": "no RUB M vs тыс.руб numerical comparison without explicit proven conversion"
+    },
+    {
+      "id": "alternative_overlap",
+      "expectation": "two NP/NOPAT hypotheses preserve both individual results and single issue, not added"
+    },
+    {
+      "id": "tampered_delta",
+      "expectation": "reject inconsistent delta/result/baseline and nonfinite values from ranking"
+    },
+    {
+      "id": "missing_proof",
+      "expectation": "missing original/changed formulas, frozen inputs or evidence cannot yield measured priority"
+    },
+    {
+      "id": "unlinked_finding",
+      "expectation": "foreign scenario IDs cannot lend impact to a different issue"
+    },
+    {
+      "id": "technical_counts",
+      "expectation": "adding low-level technical observations cannot independently downgrade suitability"
+    },
+    {
+      "id": "empty_or_partial",
+      "expectation": "no findings or incomplete stage does not imply financial approval"
+    },
+    {
+      "id": "conditional_use",
+      "expectation": "conclusion distinguishes candidate/calculation from established economic correction and names unresolved output"
+    },
+    {
+      "id": "pptx_native",
+      "expectation": "tables/chart objects stay native/editable and source rows/units trace to report"
+    },
+    {
+      "id": "pptx_typography",
+      "expectation": "Arial body10/title12 explicit per user style, no clipped geometry"
+    },
+    {
+      "id": "pptx_unknown_periods",
+      "expectation": "unknown periods on second model never become years on chart"
+    },
+    {
+      "id": "pptx_alternatives",
+      "expectation": "conditional scenarios use independent baseline comparisons, no additive waterfall"
+    },
+    {
+      "id": "pptx_provenance",
+      "expectation": "report hash/exportversion/policyversion manifest, sourceevidence in slide/notes"
+    },
+    {
+      "id": "export_preservation",
+      "expectation": "sourceworkbook/report/usage unchanged and export never calls provider"
+    },
+    {
+      "id": "export_failure",
+      "expectation": "export failure visible independently; successful analysis remains readable"
+    }
+  ],
+  "known_limitations": [
+    "This validates declared finite scope, not universal financial materiality or correctness of unverified hypotheses.",
+    "OOXML editable-object checks do not prove PowerPoint-native visual rendering; render QA is separate."
+  ]
+}

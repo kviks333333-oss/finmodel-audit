@@ -1,0 +1,14 @@
+{
+  "version": "2026-11-04.1",
+  "frozen_before_impact_runtime_results": true,
+  "fresh_historical_blind_cases": 12,
+  "impact_semantic_cases": 15,
+  "original_freeze_manifest_sha256": "cc1183b29d6186529eac7b7be69b7498c1562d5aa53415d746107c611ac05750",
+  "files": {
+    "tests/impact_cases/__init__.py": "e2411269859a19b3d7f58bba86d5d3b3bbc6c3f03dd209c0c8f1b008355aac69",
+    "tests/impact_cases/builders.py": "1f1bf24f9cadfaf398c2c2dc8a55b4f2b8b7f24a54f0faf98bb8eef57095cf78",
+    "tests/impact_cases/catalog.json": "e342ad0cc3a6cde25509d0ecfb1745492e84e56448e6f2067bc6e0253c9e2673",
+    "tests/impact_cases/originals.json": "bc33a9e76208a7f8d60e1b5edaa918c0d939e920f74687bfe05c763ae45e4e2d",
+    "tests/impact_cases/quantities.json": "b8a8a78f8d966befefe5c367606c22ed7aca230c879c6760c108d5fddfaae0ba"
+  }
+}

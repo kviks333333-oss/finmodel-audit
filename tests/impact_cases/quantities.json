@@ -1,0 +1,509 @@
+[
+  {
+    "id": "impact_01",
+    "expectation": "required",
+    "expected": [
+      {
+        "kind": "drop_duplicate_pv",
+        "code": "pv_fcff_duplicate_term",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "D18"
+        },
+        "baseline": 1414.7254296455421,
+        "result": 1311.0902255639094,
+        "scope": "single_formula_occurrence",
+        "delta": -103.63520408163276,
+        "relative_delta": -0.0732546414378078
+      }
+    ]
+  },
+  {
+    "id": "impact_02",
+    "expectation": "required",
+    "expected": [
+      {
+        "kind": "drop_duplicate_pv",
+        "code": "pv_fcff_duplicate_term",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "D18"
+        },
+        "baseline": -1236.1540010741137,
+        "result": -1132.518796992481,
+        "scope": "single_formula_occurrence",
+        "delta": 103.63520408163276,
+        "relative_delta": 0.08383680673409827
+      }
+    ]
+  },
+  {
+    "id": "impact_03",
+    "expectation": "required",
+    "expected": [
+      {
+        "kind": "drop_duplicate_pv",
+        "code": "pv_fcff_duplicate_term",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "D18"
+        },
+        "baseline": 0.0,
+        "result": 103.63520408163265,
+        "scope": "single_formula_occurrence",
+        "delta": 103.63520408163265,
+        "relative_delta": null
+      }
+    ]
+  },
+  {
+    "id": "impact_04",
+    "expectation": "required",
+    "expected": [
+      {
+        "kind": "drop_duplicate_pv",
+        "code": "pv_fcff_duplicate_term",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "D18"
+        },
+        "baseline": 1414725.429645542,
+        "result": 1311090.2255639094,
+        "scope": "single_formula_occurrence",
+        "delta": -103635.20408163266,
+        "relative_delta": -0.07325464143780773
+      }
+    ]
+  },
+  {
+    "id": "impact_05",
+    "expectation": "required",
+    "expected": [
+      {
+        "kind": "drop_duplicate_pv",
+        "code": "pv_fcff_duplicate_term",
+        "target": {
+          "sheet": "Output O'Brien",
+          "cell": "B4"
+        },
+        "baseline": 1414.7254296455421,
+        "result": 1311.0902255639094,
+        "scope": "single_formula_occurrence",
+        "delta": -103.63520408163276,
+        "relative_delta": -0.0732546414378078
+      }
+    ]
+  },
+  {
+    "id": "impact_06",
+    "expectation": "supported_or_explicit_unsupported",
+    "expected": [
+      {
+        "kind": "drop_duplicate_pv",
+        "code": "pv_fcff_duplicate_term",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "D18"
+        },
+        "baseline": 2001448.0412857637,
+        "result": 1718957.5795692226,
+        "scope": "single_formula_occurrence",
+        "delta": -282490.4617165411,
+        "relative_delta": -0.14114304038343384
+      }
+    ]
+  },
+  {
+    "id": "impact_07",
+    "expectation": "fail_closed",
+    "expected": [
+      {
+        "kind": "drop_duplicate_pv",
+        "code": "pv_fcff_duplicate_term",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "D18"
+        },
+        "baseline": 1414.7254296455421,
+        "result": 1311.0902255639094,
+        "scope": "single_formula_occurrence",
+        "delta": -103.63520408163276,
+        "relative_delta": -0.0732546414378078
+      }
+    ]
+  },
+  {
+    "id": "impact_08",
+    "expectation": "fail_closed",
+    "expected": [
+      {
+        "kind": "drop_duplicate_pv",
+        "code": "pv_fcff_duplicate_term",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "D18"
+        },
+        "baseline": 1414.7254296455421,
+        "result": 1311.0902255639094,
+        "scope": "single_formula_occurrence",
+        "delta": -103.63520408163276,
+        "relative_delta": -0.0732546414378078
+      }
+    ]
+  },
+  {
+    "id": "impact_09",
+    "expectation": "required",
+    "expected": [
+      {
+        "kind": "drop_historical_pv",
+        "code": "pv_fcff_historical_period",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "D18"
+        },
+        "baseline": 1386.0902255639096,
+        "result": 1311.0902255639096,
+        "scope": "single_formula_occurrence",
+        "delta": -75.0,
+        "relative_delta": -0.05410903173311636
+      }
+    ]
+  },
+  {
+    "id": "impact_10",
+    "expectation": "required",
+    "expected": [
+      {
+        "kind": "drop_historical_pv",
+        "code": "pv_fcff_historical_period",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "D18"
+        },
+        "baseline": 1236.0902255639096,
+        "result": 1311.0902255639096,
+        "scope": "single_formula_occurrence",
+        "delta": 75.0,
+        "relative_delta": 0.060675182481751834
+      }
+    ]
+  },
+  {
+    "id": "impact_11",
+    "expectation": "supported_or_explicit_unsupported",
+    "expected": [
+      {
+        "kind": "gordon_single_discount",
+        "code": "gordon_double_discount",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "D18"
+        },
+        "baseline": 1084.3186441299129,
+        "result": 1311.0902255639096,
+        "scope": "single_formula_occurrence",
+        "delta": 226.77158143399674,
+        "relative_delta": 0.20913739947353252
+      }
+    ]
+  },
+  {
+    "id": "impact_12",
+    "expectation": "no_correction",
+    "expected": [
+      {
+        "kind": "gordon_single_discount",
+        "code": "gordon_double_discount",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "D18"
+        },
+        "baseline": 1084.3186441299129,
+        "result": 1311.0902255639096,
+        "scope": "single_formula_occurrence",
+        "delta": 226.77158143399674,
+        "relative_delta": 0.20913739947353252
+      }
+    ]
+  },
+  {
+    "id": "impact_13",
+    "expectation": "required",
+    "expected": [
+      {
+        "kind": "exclude_net_profit",
+        "code": "fcff_net_profit_nopat_overlap",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "C36"
+        },
+        "baseline": 207.14636299146895,
+        "result": 63.62661164806855,
+        "scope": "all_identified_overlap_terms",
+        "required": false,
+        "delta": -143.5197513434004,
+        "relative_delta": -0.6928422457956024
+      },
+      {
+        "kind": "exclude_net_profit",
+        "code": "fcff_net_profit_nopat_overlap",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "C36"
+        },
+        "baseline": 207.14636299146895,
+        "result": 167.84106134613074,
+        "scope": "one_overlap_formula",
+        "changed_cell": "D28",
+        "removed_cell": "D23",
+        "required": true,
+        "delta": -39.305301645338204,
+        "relative_delta": -0.18974652066161038
+      },
+      {
+        "kind": "exclude_net_profit",
+        "code": "fcff_net_profit_nopat_overlap",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "C36"
+        },
+        "baseline": 207.14636299146895,
+        "result": 158.68525386707765,
+        "scope": "one_overlap_formula",
+        "changed_cell": "E28",
+        "removed_cell": "E23",
+        "required": true,
+        "delta": -48.4611091243913,
+        "relative_delta": -0.2339462224899749
+      },
+      {
+        "kind": "exclude_net_profit",
+        "code": "fcff_net_profit_nopat_overlap",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "C36"
+        },
+        "baseline": 207.14636299146895,
+        "result": 151.39302241779805,
+        "scope": "one_overlap_formula",
+        "changed_cell": "F28",
+        "removed_cell": "F23",
+        "required": true,
+        "delta": -55.7533405736709,
+        "relative_delta": -0.2691495026440171
+      },
+      {
+        "kind": "exclude_nopat",
+        "code": "fcff_net_profit_nopat_overlap",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "C36"
+        },
+        "baseline": 207.14636299146895,
+        "result": 58.599896571901525,
+        "scope": "all_identified_overlap_terms",
+        "required": false,
+        "delta": -148.54646641956742,
+        "relative_delta": -0.717108735458151
+      },
+      {
+        "kind": "exclude_nopat",
+        "code": "fcff_net_profit_nopat_overlap",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "C36"
+        },
+        "baseline": 207.14636299146895,
+        "result": 166.0129077812313,
+        "scope": "one_overlap_formula",
+        "changed_cell": "D28",
+        "removed_cell": "D24",
+        "required": true,
+        "delta": -41.133455210237656,
+        "relative_delta": -0.19857194022726668
+      },
+      {
+        "kind": "exclude_nopat",
+        "code": "fcff_net_profit_nopat_overlap",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "C36"
+        },
+        "baseline": 207.14636299146895,
+        "result": 157.01418113865037,
+        "scope": "one_overlap_formula",
+        "changed_cell": "E28",
+        "removed_cell": "E24",
+        "required": true,
+        "delta": -50.132181852818576,
+        "relative_delta": -0.24201333361031882
+      },
+      {
+        "kind": "exclude_nopat",
+        "code": "fcff_net_profit_nopat_overlap",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "C36"
+        },
+        "baseline": 207.14636299146895,
+        "result": 149.86553363495776,
+        "scope": "one_overlap_formula",
+        "changed_cell": "F28",
+        "removed_cell": "F24",
+        "required": true,
+        "delta": -57.28082935651119,
+        "relative_delta": -0.2765234616205655
+      }
+    ]
+  },
+  {
+    "id": "impact_14",
+    "expectation": "required",
+    "expected": [
+      {
+        "kind": "exclude_net_profit",
+        "code": "fcff_net_profit_nopat_overlap",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "C36"
+        },
+        "baseline": -692.853637008531,
+        "result": -836.3733883519315,
+        "scope": "all_identified_overlap_terms",
+        "required": false,
+        "delta": -143.51975134340046,
+        "relative_delta": -0.20714295729623675
+      },
+      {
+        "kind": "exclude_net_profit",
+        "code": "fcff_net_profit_nopat_overlap",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "C36"
+        },
+        "baseline": -692.853637008531,
+        "result": -732.1589386538692,
+        "scope": "one_overlap_formula",
+        "changed_cell": "D28",
+        "removed_cell": "D23",
+        "required": true,
+        "delta": -39.305301645338204,
+        "relative_delta": -0.05672958839480588
+      },
+      {
+        "kind": "exclude_net_profit",
+        "code": "fcff_net_profit_nopat_overlap",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "C36"
+        },
+        "baseline": -692.853637008531,
+        "result": -741.3147461329223,
+        "scope": "one_overlap_formula",
+        "changed_cell": "E28",
+        "removed_cell": "E23",
+        "required": true,
+        "delta": -48.46110912439133,
+        "relative_delta": -0.06994422275623363
+      },
+      {
+        "kind": "exclude_net_profit",
+        "code": "fcff_net_profit_nopat_overlap",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "C36"
+        },
+        "baseline": -692.853637008531,
+        "result": -748.6069775822019,
+        "scope": "one_overlap_formula",
+        "changed_cell": "F28",
+        "removed_cell": "F23",
+        "required": true,
+        "delta": -55.753340573670926,
+        "relative_delta": -0.08046914614519725
+      },
+      {
+        "kind": "exclude_nopat",
+        "code": "fcff_net_profit_nopat_overlap",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "C36"
+        },
+        "baseline": -692.853637008531,
+        "result": -841.4001034280984,
+        "scope": "all_identified_overlap_terms",
+        "required": false,
+        "delta": -148.54646641956742,
+        "relative_delta": -0.21439804669415108
+      },
+      {
+        "kind": "exclude_nopat",
+        "code": "fcff_net_profit_nopat_overlap",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "C36"
+        },
+        "baseline": -692.853637008531,
+        "result": -733.9870922187687,
+        "scope": "one_overlap_formula",
+        "changed_cell": "D28",
+        "removed_cell": "D24",
+        "required": true,
+        "delta": -41.133455210237685,
+        "relative_delta": -0.059368173901541074
+      },
+      {
+        "kind": "exclude_nopat",
+        "code": "fcff_net_profit_nopat_overlap",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "C36"
+        },
+        "baseline": -692.853637008531,
+        "result": -742.9858188613496,
+        "scope": "one_overlap_formula",
+        "changed_cell": "E28",
+        "removed_cell": "E24",
+        "required": true,
+        "delta": -50.132181852818576,
+        "relative_delta": -0.07235609250644852
+      },
+      {
+        "kind": "exclude_nopat",
+        "code": "fcff_net_profit_nopat_overlap",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "C36"
+        },
+        "baseline": -692.853637008531,
+        "result": -750.1344663650422,
+        "scope": "one_overlap_formula",
+        "changed_cell": "F28",
+        "removed_cell": "F24",
+        "required": true,
+        "delta": -57.28082935651116,
+        "relative_delta": -0.08267378028616147
+      }
+    ]
+  },
+  {
+    "id": "impact_15",
+    "expectation": "no_correction",
+    "expected": [
+      {
+        "kind": "drop_duplicate_pv",
+        "code": "pv_fcff_duplicate_term",
+        "target": {
+          "sheet": "Example cash model",
+          "cell": "D18"
+        },
+        "baseline": 1414.7254296455421,
+        "result": 1311.0902255639094,
+        "scope": "single_formula_occurrence",
+        "delta": -103.63520408163276,
+        "relative_delta": -0.0732546414378078
+      }
+    ]
+  }
+]

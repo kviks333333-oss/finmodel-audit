@@ -1,0 +1,35 @@
+{
+  "version": "2026-11-04.1",
+  "freeze_policy": "Labels and arithmetic frozen before reading impact runtime results; historical variants kept blind from detector implementer until freeze.",
+  "impact_cases": [
+    {"id":"impact_01","variant":"duplicate_plain","expectation":"required"},
+    {"id":"impact_02","variant":"duplicate_negative","expectation":"required"},
+    {"id":"impact_03","variant":"duplicate_zero","expectation":"required"},
+    {"id":"impact_04","variant":"duplicate_scaled","expectation":"required"},
+    {"id":"impact_05","variant":"duplicate_cross_sheet","expectation":"required"},
+    {"id":"impact_06","variant":"duplicate_nonlinear","expectation":"supported_or_explicit_unsupported"},
+    {"id":"impact_07","variant":"duplicate_dynamic","expectation":"fail_closed"},
+    {"id":"impact_08","variant":"duplicate_external","expectation":"fail_closed"},
+    {"id":"impact_09","variant":"historical_plain","expectation":"required"},
+    {"id":"impact_10","variant":"historical_negative","expectation":"required"},
+    {"id":"impact_11","variant":"gordon_plain","expectation":"supported_or_explicit_unsupported"},
+    {"id":"impact_12","variant":"gordon_disabled","expectation":"no_correction"},
+    {"id":"impact_13","variant":"project_plain","expectation":"required"},
+    {"id":"impact_14","variant":"project_negative","expectation":"required"},
+    {"id":"impact_15","variant":"independent_equal","expectation":"no_correction"}
+  ],
+  "historical_blind_cases": [
+    {"id":"calendar_blind_01","variant":"remote_header","expected_historical":true,"row_shift":37,"column_shift":11,"sheet":"West & North"},
+    {"id":"calendar_blind_02","variant":"fy_text","expected_historical":true,"row_shift":119,"column_shift":31,"sheet":"Remote costs"},
+    {"id":"calendar_blind_03","variant":"amount_decoy","expected_historical":true,"row_shift":59,"column_shift":17,"sheet":"Archive O'Brien"},
+    {"id":"calendar_blind_04","variant":"indexes","expected_historical":false,"row_shift":43,"column_shift":9,"sheet":"Plan delta"},
+    {"id":"calendar_blind_05","variant":"unlabeled_amounts","expected_historical":false,"row_shift":89,"column_shift":21,"sheet":"Value grid"},
+    {"id":"calendar_blind_06","variant":"future","expected_historical":false,"row_shift":67,"column_shift":13,"sheet":"Next window"},
+    {"id":"calendar_blind_07","variant":"ambiguous_year_text","expected_historical":false,"row_shift":23,"column_shift":27,"sheet":"Stage notes"},
+    {"id":"calendar_blind_08","variant":"cross_sheet_year","expected_historical":true,"row_shift":151,"column_shift":33,"sheet":"Group assumptions"},
+    {"id":"calendar_blind_09","variant":"missing_valuation_date","expected_historical":false,"row_shift":73,"column_shift":15,"sheet":"Archive estimates"},
+    {"id":"calendar_blind_10","variant":"unstyled_serials","expected_historical":false,"row_shift":127,"column_shift":25,"sheet":"Unstyled dates"},
+    {"id":"calendar_blind_11","variant":"iso_date_headers","expected_historical":true,"row_shift":97,"column_shift":19,"sheet":"Calendar horizons"},
+    {"id":"calendar_blind_12","variant":"year_sized_indexes","expected_historical":false,"row_shift":181,"column_shift":7,"sheet":"Period index"}
+  ]
+}

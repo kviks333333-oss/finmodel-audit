@@ -1,0 +1,9 @@
+{
+  "name": "finmodel-pptx-runtime",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Deterministic presentation renderer for verified financial reports",
+  "license": "UNLICENSED",
+  "engines": { "node": ">=20" },
+  "dependencies": { "pptxgenjs": "4.0.1", "jszip": "3.10.1" }
+}

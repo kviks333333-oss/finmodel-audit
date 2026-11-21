@@ -1,0 +1,551 @@
+{
+  "version": "2026-11-04.1",
+  "books": [
+    {
+      "id": "original_corporate",
+      "source": "examples/Fin_Model_for_test.xlsx",
+      "sha256": "ea7392b4323844ebe8baa430e0dc219468ae671b59accf88c682a862e55f4df1",
+      "report": "outputs/agent_review_v12/report.json",
+      "expected": [
+        "pv_fcff_duplicate_term",
+        "pv_fcff_historical_period",
+        "gordon_double_discount",
+        "datatable_basepoint_cache_mismatch"
+      ],
+      "proof": {
+        "pv_fcff_duplicate_term": [
+          {
+            "sheet": "DCF",
+            "cell": "E39"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "N39"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "P39"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "N27"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "P27"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "N37"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "P37"
+          }
+        ],
+        "pv_fcff_historical_period": [
+          {
+            "sheet": "DCF",
+            "cell": "E39"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "H39"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "H9"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "E33"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "H36"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "H37"
+          }
+        ],
+        "gordon_double_discount": [
+          {
+            "sheet": "DCF",
+            "cell": "E45"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "E44"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "E41"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "F45"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "F46"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "P39"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "P27"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "P37"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "N37"
+          }
+        ],
+        "datatable_basepoint_cache_mismatch": [
+          {
+            "sheet": "DCF",
+            "cell": "J71"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "I70"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "E55"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "N73"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "I73"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "N70"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "E13"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "E14"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "topic": "rate_components",
+          "required_present": [
+            {
+              "sheet": "WACC",
+              "cell": "E42"
+            },
+            {
+              "sheet": "WACC",
+              "cell": "E23"
+            },
+            {
+              "sheet": "WACC",
+              "cell": "E35"
+            },
+            {
+              "sheet": "WACC",
+              "cell": "E39"
+            },
+            {
+              "sheet": "WACC",
+              "cell": "E40"
+            },
+            {
+              "sheet": "WACC",
+              "cell": "E13"
+            },
+            {
+              "sheet": "WACC",
+              "cell": "E19"
+            },
+            {
+              "sheet": "WACC",
+              "cell": "E20"
+            },
+            {
+              "sheet": "WACC",
+              "cell": "E21"
+            },
+            {
+              "sheet": "WACC",
+              "cell": "E33"
+            },
+            {
+              "sheet": "WACC",
+              "cell": "E34"
+            },
+            {
+              "sheet": "WACC",
+              "cell": "E16"
+            },
+            {
+              "sheet": "WACC",
+              "cell": "E17"
+            }
+          ],
+          "required_absent": []
+        },
+        {
+          "topic": "cashflow_drivers",
+          "required_present": [
+            {
+              "sheet": "DCF",
+              "cell": "N19"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "N20"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "N22"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "N23"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "N24"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "N25"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "N27"
+            }
+          ],
+          "required_absent": []
+        },
+        {
+          "topic": "calendar",
+          "required_present": [
+            {
+              "sheet": "DCF",
+              "cell": "E33"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "H9"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "I9"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "N9"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "H36"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "I36"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "N36"
+            }
+          ],
+          "required_absent": []
+        }
+      ]
+    },
+    {
+      "id": "second_project",
+      "source": "examples/sber_slay_модель.xlsx",
+      "sha256": "2638f363b154a7fd61955058b7752c9dc8e903a323a6f58ab0ba964754e8af9a",
+      "report": "outputs/second_model_agent_v1/report.json",
+      "expected": [
+        "irr_on_discounted_cashflows",
+        "fcff_net_profit_nopat_overlap"
+      ],
+      "proof": {
+        "irr_on_discounted_cashflows": [
+          {
+            "sheet": "DCF",
+            "cell": "C40"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "C29"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "D29"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "E29"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "F29"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "G29"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "H29"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "C25"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "D25"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "E25"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "F25"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "G25"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "H25"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "C28"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "D28"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "E28"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "F28"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "G28"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "H28"
+          }
+        ],
+        "fcff_net_profit_nopat_overlap": [
+          {
+            "sheet": "DCF",
+            "cell": "A19"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "A20"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "D19"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "D20"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "D25"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "D16"
+          },
+          {
+            "sheet": "DCF",
+            "cell": "D17"
+          }
+        ]
+      },
+      "questions": [
+        {
+          "topic": "rate_components",
+          "required_present": [
+            {
+              "sheet": "DCF",
+              "cell": "C37"
+            },
+            {
+              "sheet": "WACC",
+              "cell": "B35"
+            },
+            {
+              "sheet": "WACC",
+              "cell": "B24"
+            },
+            {
+              "sheet": "WACC",
+              "cell": "B26"
+            },
+            {
+              "sheet": "WACC",
+              "cell": "B27"
+            },
+            {
+              "sheet": "WACC",
+              "cell": "B31"
+            },
+            {
+              "sheet": "WACC",
+              "cell": "B32"
+            },
+            {
+              "sheet": "WACC",
+              "cell": "B6"
+            },
+            {
+              "sheet": "WACC",
+              "cell": "B7"
+            },
+            {
+              "sheet": "WACC",
+              "cell": "B18"
+            },
+            {
+              "sheet": "WACC",
+              "cell": "B22"
+            }
+          ],
+          "required_absent": [
+            {
+              "sheet": "WACC",
+              "cell": "K3"
+            }
+          ]
+        },
+        {
+          "topic": "cashflow_drivers",
+          "required_present": [
+            {
+              "sheet": "DCF",
+              "cell": "D13"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "D16"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "D19"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "D20"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "D22"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "D23"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "D24"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "D25"
+            },
+            {
+              "sheet": "Calcs",
+              "cell": "G25"
+            }
+          ],
+          "required_absent": []
+        },
+        {
+          "topic": "calendar",
+          "required_present": [
+            {
+              "sheet": "DCF",
+              "cell": "D6"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "D8"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "D9"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "E8"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "E9"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "H8"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "H9"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "D11"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "H11"
+            }
+          ],
+          "required_absent": [
+            {
+              "sheet": "DCF",
+              "cell": "G6"
+            },
+            {
+              "sheet": "DCF",
+              "cell": "C7"
+            }
+          ]
+        }
+      ],
+      "investigation_issues": [
+        "blank_risk_free_reference",
+        "calendar_step_missing",
+        "calendar_end_before_start"
+      ]
+    }
+  ],
+  "observation_matching": "Code/explicit finding_id first, otherwise fixed topical regex; citation completeness is not semantic truth."
+}

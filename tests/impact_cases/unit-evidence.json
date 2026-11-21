@@ -1,0 +1,7 @@
+{
+  "note": "Additive metadata correction before inspecting impact runtime results. The frozen originals.json first-book raw_unit field contains a Russian display interpretation, not the exact Excel text. Frozen numeric answers and files remain unchanged; exact raw units below are authoritative for source-label checks.",
+  "books": {
+    "original_corporate": {"sheet":"DCF","cell":"D55","raw_value":"RUB M","display_interpretation":"млн руб."},
+    "second_project": {"sheet":"DCF","cell":"B39","raw_value":"тыс. руб."}
+  }
+}

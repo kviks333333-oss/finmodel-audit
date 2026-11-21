@@ -1,0 +1,483 @@
+{
+  "version": "2026-11-04.1",
+  "frozen_before_runtime_results": true,
+  "books": [
+    {
+      "id": "original_corporate",
+      "source": "examples/Fin_Model_for_test.xlsx",
+      "sha256": "ea7392b4323844ebe8baa430e0dc219468ae671b59accf88c682a862e55f4df1",
+      "baseline": 100579.37480758553,
+      "raw_unit": "млн руб.",
+      "scenarios": {
+        "drop_duplicate_pv": {
+          "result": 90306.97589153993,
+          "delta": -10272.398916045597,
+          "relative_delta": -0.10213226057228256
+        },
+        "drop_historical_pv": {
+          "result": 101296.93270758563,
+          "delta": 717.5579000001017,
+          "relative_delta": 0.007134244981864658
+        },
+        "drop_duplicate_and_historical_pv": {
+          "result": 91024.53379154003,
+          "delta": -9554.841016045495,
+          "relative_delta": -0.0949980155904179
+        },
+        "gordon_single_discount": {
+          "result": 154303.82761937444,
+          "delta": 53724.45281178891,
+          "relative_delta": 0.5341497987491677
+        },
+        "all_three_conditional": {
+          "result": 144748.98660332896,
+          "delta": 44169.61179574343,
+          "relative_delta": 0.4391517831587499
+        }
+      },
+      "source_cells": [
+        {
+          "sheet": "DCF",
+          "cell": "E13",
+          "value": 0.21609776455460197,
+          "formula": "=WACC!$E$42"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "E14",
+          "value": 0.08,
+          "formula": null
+        },
+        {
+          "sheet": "DCF",
+          "cell": "E33",
+          "value": "30/6/2026",
+          "formula": null
+        },
+        {
+          "sheet": "DCF",
+          "cell": "E39",
+          "value": 72787.49363963235,
+          "formula": "=SUM(H39:R39)"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "E41",
+          "value": 27791.881167953183,
+          "formula": "=$E$44*$N$37"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "E44",
+          "value": 81516.3339797421,
+          "formula": "=E45*F45+E46*F46"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "E45",
+          "value": 81516.3339797421,
+          "formula": "=P39*(1+$E$14)/($E$13-$E$14)"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "E46",
+          "value": 95409.37398239264,
+          "formula": "=E49*E50"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "E55",
+          "value": 100579.37480758553,
+          "formula": "=E39+E41"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "F45",
+          "value": 1,
+          "formula": "=100%-F46"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "F46",
+          "value": 0,
+          "formula": null
+        },
+        {
+          "sheet": "DCF",
+          "cell": "H9",
+          "value": 2025,
+          "formula": "=H6"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "H39",
+          "value": -717.5579000000976,
+          "formula": "=H27*H37"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "N27",
+          "value": 30129.961183738895,
+          "formula": "=N22+N23+N24+N25"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "N37",
+          "value": 0.3409363474915326,
+          "formula": "=1/(1+$E$13)^N36"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "N39",
+          "value": 10272.398916045593,
+          "formula": "=N27*N37"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "P27",
+          "value": 30129.961183738895,
+          "formula": "=P22+P23+P24+P25"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "P37",
+          "value": 0.3409363474915326,
+          "formula": "=N37"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "P39",
+          "value": 10272.398916045593,
+          "formula": "=P27*P37"
+        }
+      ],
+      "assumptions": [
+        "Saved upstream operating cashflows and rates are frozen; no full workbook recalculation.",
+        "Changes apply to identified formula occurrences, never globally zero a reused source cell.",
+        "Alternative correction choices do not establish financial correctness.",
+        "Combined impacts must be explicitly recomputed; separate scenario deltas are not generally additive."
+      ]
+    },
+    {
+      "id": "second_project",
+      "source": "examples/sber_slay_модель.xlsx",
+      "sha256": "2638f363b154a7fd61955058b7752c9dc8e903a323a6f58ab0ba964754e8af9a",
+      "baseline": 212584.20764063371,
+      "raw_unit": "тыс. руб.",
+      "scenarios": {
+        "exclude_net_profit_from_fcff": {
+          "result": 74292.13174105328,
+          "delta": -138292.07589958044,
+          "relative_delta": -0.6505284538038613
+        },
+        "exclude_nopat_from_fcff": {
+          "result": 73175.11834137447,
+          "delta": -139409.08929925924,
+          "relative_delta": -0.6557829052613612
+        }
+      },
+      "source_cells": [
+        {
+          "sheet": "DCF",
+          "cell": "C25",
+          "value": -40000,
+          "formula": "=SUM(C19:C24)"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "C29",
+          "value": -40000,
+          "formula": "=C25*C28"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "C37",
+          "value": 0.8074694000000001,
+          "formula": "=C32*C33+C34*(1-C35)*C36"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "C39",
+          "value": 212584.20764063371,
+          "formula": "=SUM(C29:H29)"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "D11",
+          "value": 1,
+          "formula": "=C11+1"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "D16",
+          "value": 54440,
+          "formula": "=SUM(D13:D15)"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "D17",
+          "value": -13610,
+          "formula": "=IF(D16<0,0,D16*Assumptions!G21)*-1"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "D18",
+          "value": -1153.2799999999997,
+          "formula": "=Assumptions!G98*-1"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "D19",
+          "value": 39676.72,
+          "formula": "=D16+D17+D18"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "D20",
+          "value": 40830,
+          "formula": "=D16+D17"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "D25",
+          "value": 57381.240547945206,
+          "formula": "=SUM(D19:D24)"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "D28",
+          "value": 0.5532597121699543,
+          "formula": "=1/(1+D27)^D11"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "D29",
+          "value": 31746.728629511075,
+          "formula": "=D25*D28"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "E11",
+          "value": 2,
+          "formula": "=D11+1"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "E16",
+          "value": 147447.75,
+          "formula": "=SUM(E13:E15)"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "E17",
+          "value": -36861.9375,
+          "formula": "=IF(E16<0,0,E16*Assumptions!H21)*-1"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "E18",
+          "value": -1009.1199999999997,
+          "formula": "=Assumptions!H98*-1"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "E19",
+          "value": 109576.6925,
+          "formula": "=E16+E17+E18"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "E20",
+          "value": 110585.8125,
+          "formula": "=E16+E17"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "E25",
+          "value": 203386.66938356165,
+          "formula": "=SUM(E19:E24)"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "E28",
+          "value": 0.3060963091103807,
+          "formula": "=1/(1+E27)^E11"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "E29",
+          "value": 62255.90882056149,
+          "formula": "=E25*E28"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "F11",
+          "value": 3,
+          "formula": "=E11+1"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "F16",
+          "value": 263235.45,
+          "formula": "=SUM(F13:F15)"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "F17",
+          "value": -65808.8625,
+          "formula": "=IF(F16<0,0,F16*Assumptions!I21)*-1"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "F18",
+          "value": -720.7999999999996,
+          "formula": "=Assumptions!I98*-1"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "F19",
+          "value": 196705.78750000003,
+          "formula": "=F16+F17+F18"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "F20",
+          "value": 197426.58750000002,
+          "formula": "=F16+F17"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "F25",
+          "value": 373380.69280821923,
+          "formula": "=SUM(F19:F24)"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "F28",
+          "value": 0.1693507558746946,
+          "formula": "=1/(1+F27)^F11"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "F29",
+          "value": 63232.30255608907,
+          "formula": "=F25*F28"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "G11",
+          "value": 4,
+          "formula": "=F11+1"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "G16",
+          "value": 401230.13812499994,
+          "formula": "=SUM(G13:G15)"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "G17",
+          "value": -100307.53453124998,
+          "formula": "=IF(G16<0,0,G16*Assumptions!J21)*-1"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "G18",
+          "value": -432.47999999999985,
+          "formula": "=Assumptions!J98*-1"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "G19",
+          "value": 300490.12359374994,
+          "formula": "=G16+G17+G18"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "G20",
+          "value": 300922.6035937499,
+          "formula": "=G16+G17"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "G25",
+          "value": 576782.6355436642,
+          "formula": "=SUM(G19:G24)"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "G28",
+          "value": 0.09369495045099772,
+          "formula": "=1/(1+G27)^G11"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "G29",
+          "value": 54041.620458259495,
+          "formula": "=G25*G28"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "H11",
+          "value": 5,
+          "formula": "=G11+1"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "H16",
+          "value": 548901.4136249999,
+          "formula": "=SUM(H13:H15)"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "H17",
+          "value": -137225.35340624998,
+          "formula": "=IF(H16<0,0,H16*Assumptions!K21)*-1"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "H18",
+          "value": -144.1599999999999,
+          "formula": "=Assumptions!K98*-1"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "H19",
+          "value": 411531.90021874994,
+          "formula": "=H16+H17+H18"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "H20",
+          "value": 411676.0602187499,
+          "formula": "=H16+H17"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "H25",
+          "value": 796865.870547089,
+          "formula": "=SUM(H19:H24)"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "H28",
+          "value": 0.05183764131829713,
+          "formula": "=1/(1+H27)^H11"
+        },
+        {
+          "sheet": "DCF",
+          "cell": "H29",
+          "value": 41307.647176212595,
+          "formula": "=H25*H28"
+        }
+      ],
+      "assumptions": [
+        "Saved upstream operating cashflows and rates are frozen; no full workbook recalculation.",
+        "Changes apply to identified formula occurrences, never globally zero a reused source cell.",
+        "Alternative correction choices do not establish financial correctness.",
+        "Combined impacts must be explicitly recomputed; separate scenario deltas are not generally additive."
+      ]
+    }
+  ]
+}
